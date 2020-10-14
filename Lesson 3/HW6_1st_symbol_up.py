@@ -1,16 +1,16 @@
 def int_func(int_str):
-    """Функция переводит первую букву каждого слова в строке, вверхний регистр без использования функции "title".
-
-    i[0].upper() -- переводит первую букву в верхний регистр;
-    i[1:len(i)].lower() -- переводит все буквы, кроме первой, в нижний регистр;
-    return new_str[:-1] -- возвращает готовую строку без лишнего пробела в конце, полученного в ходе последней итерации.
-
-    """
+    """Убирает слова с кирилицей и символами. В оставшихся словах, первую букву, переводит вверхний регистр"""
     new_str = ""
-    int_str = int_str.split()
-    for i in int_str:
-        new_str += i[0].upper() + i[1:len(i)].lower() + " "
-    return new_str[:-1]
+    for word in int_str.split():
+        new_word = ""
+        for letter in word:
+            if 96 < ord(letter) < 123:
+                new_word += letter
+            else:
+                new_word = ""
+                break
+        new_str += new_word + " "
+    return " ".join(new_str.title().split())
 
 
 user_text = input("Введите текст разделенный пробелом: ")
