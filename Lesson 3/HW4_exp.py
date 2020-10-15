@@ -1,10 +1,11 @@
 def my_func(x, y):
+    answer = 1
+    for i in range(abs(y)):
+        answer *= x
     try:
-        for i in range(abs(y)-1):
-            x *= x
+        return 1/answer
     except ZeroDivisionError:
         return "0 нельзя возвести в отрицательную степень."
-    return 1/x
 
 
 while True:
